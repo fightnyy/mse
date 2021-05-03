@@ -1,6 +1,7 @@
 package ex.plea.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Qualifier("userRepositoryUserDetailsService")
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -28,7 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN");
+                .antMatchers("/","/**").access("permitAll")
+                .and()
+                .csrf()
+                .disable();
 
     }
 

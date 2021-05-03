@@ -10,9 +10,21 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Chito {
 
-    private int timepoint;
+    private int time_point;
     private int grade;
     private int intelligence;
     private int health;
     private int speech;
+
+    public Chito()
+    {
+
+    }
+    public Chito(int time_point, int grade, int intelligence, int health, int speech) {
+        this.time_point = time_point;
+        this.grade = grade;
+        this.intelligence = intelligence;
+        this.health = health;
+        this.speech = speech;
+    }
 }

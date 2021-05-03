@@ -14,7 +14,7 @@ public class UserDto {
 
     private String password;
 
-    private UserRole Role = UserRole.ROLE_NOT_PERMITTED;
+    private UserRole Role = UserRole.ROLE_USER;
 
     private Chito chito = new Chito();
 

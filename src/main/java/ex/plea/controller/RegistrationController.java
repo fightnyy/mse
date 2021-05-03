@@ -29,8 +29,10 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public void processRegistration(UserDto userDto)
+    public UserDto processRegistration(UserDto userDto)
     {
+        System.out.println("You Enter Here!");
         userRepository.save(userDto.toUser(passwordEncoder));
+        return userDto;
     }
 }
