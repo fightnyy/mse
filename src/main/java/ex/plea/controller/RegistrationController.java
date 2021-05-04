@@ -1,5 +1,6 @@
 package ex.plea.controller;
 
+import ex.plea.component.Response;
 import ex.plea.component.User;
 import ex.plea.dto.UserDto;
 import ex.plea.repository.UserRepository;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.http.HttpResponse;
+;
 
 @RestController
 @RequestMapping("/register")
@@ -29,10 +30,22 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public UserDto processRegistration(UserDto userDto)
+    public Response processRegistration(UserDto userDto)
     {
+        Response response = new Response();
         System.out.println("You Enter Here!");
-        userRepository.save(userDto.toUser(passwordEncoder));
-        return userDto;
+        try {
+            userRepository.save(userDto.toUser(passwordEncoder));
+            response.setResponse("success");
+            response.setMessage("회원가입을 성공했습니다.");
+        }
+        catch(Exception e)
+        {
+            response.setResponse("failed");
+            response.setMessage("회원가입을 실패했습니다.");
+        }
+        return response;
     }
+
+
 }

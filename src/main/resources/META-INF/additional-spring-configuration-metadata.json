@@ -4,5 +4,10 @@
       "name": "spring.logging.level.org.hibernate.SQL",
       "type": "java.lang.String",
       "description": "Description for spring.logging.level.org.hibernate.SQL."
-  }
-] }
+    },
+    {
+      "name": "spring.jwt.secret",
+      "type": "java.lang.String",
+      "description": "Description for spring.jwt.secret."
+    }
+  ] }

@@ -4,6 +4,8 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+  jwt:
+    secret: jwtsecretkey
 
   jpa:
     hibernate:
@@ -14,3 +16,6 @@ spring:
 
   logging.level:
     org.hibernate.SQL: debug
+
+server:
+  port: 8080

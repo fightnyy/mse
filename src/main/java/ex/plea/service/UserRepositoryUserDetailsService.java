@@ -1,12 +1,15 @@
 package ex.plea.service;
 
 import ex.plea.component.User;
+import ex.plea.dto.UserDto;
 import ex.plea.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -27,4 +30,5 @@ public class UserRepositoryUserDetailsService implements UserDetailsService {
         }
         throw new UsernameNotFoundException("User '" + username + "' not found");
     }
+
 }

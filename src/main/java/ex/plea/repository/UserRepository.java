@@ -11,22 +11,6 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public class UserRepository {
-    @PersistenceContext
-    private EntityManager em;
-
-    @Transactional
-    public void save(User user){
-        em.persist(user);
-    }
-    
-    public User findOne(Long id)
-    {
-        return em.find(User.class, id);
-        
-    }
-    public User findByUsername(String username)
-    {
-        return em.createQuery("select u from User u where u.username = :username", User.class).setParameter("username", username).getSingleResult();
-    }
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findByUsername(String username);
 }

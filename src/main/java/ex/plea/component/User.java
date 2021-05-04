@@ -44,6 +44,7 @@ public class User implements UserDetails {
         this.chito = chito;
     }
 
+
     @Override
     // 해당 사용자에게 부여된 권한을 저장한 컬렉션을 반환
     public Collection<? extends GrantedAuthority> getAuthorities() {
